@@ -1,7 +1,8 @@
 class HTMLParser:
     def __init__(self):
         states, self.rules, input_symbols = self.read_files('PDA.txt')
-        self.current_state = 'MAIN'
+        # self.current_state = 'MAIN'
+        print(self.rules[1])
         self.stack = ['Z']
     
     # def check_states(self, line):
@@ -36,7 +37,7 @@ class HTMLParser:
             self.apply_rule(rule, char)
 
     def parse_html(self, html_string):
-        self.current_state[0] = 'MAIN'
+        self.current_state = 'MAIN'
         for char in html_string:
             self.process_char(char)
 
