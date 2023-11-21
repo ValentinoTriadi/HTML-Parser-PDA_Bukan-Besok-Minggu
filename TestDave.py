@@ -1,4 +1,83 @@
 class HTMLParser:
+    current_state:str = ''
+    state:list = []
+    rule:dict = {
+        '<': {
+            'top': '',
+            'next-stack':'',
+            'push':''
+        },
+        'h': {
+            'top': '',
+            'next-stack':'',
+            'push':''
+        },
+        'l': {
+            'top': '',
+            'next-stack':'',
+            'push':''
+        }
+    }
+    symbol:list = []
+
+
+    def makeStateList(self, s):
+        global state
+        temp = ""
+        for cc in s:
+            if cc != ' ':
+                temp += cc
+            else:
+                self.state.append(temp)
+                temp = ''
+        print(self.state)
+
+    def makeSymbolList(self, s):
+        global symbol
+        temp = ""
+        for cc in s:
+            if cc != ' ':
+                temp += cc
+            else:
+                self.symbol.append(temp)
+                temp = ''
+        print(self.symbol)
+
+    def makeRuleDict(self, s):
+        global rule, current_state
+        temprule = []
+        tempdict = {}
+        temp = ""
+        for cc in s:
+            if cc != ' ':
+                temp += cc
+            else:
+                temprule.append(temp)
+                temp = ''
+        if temprule[0] == current_state:
+            tempdict['top'] = temprule[2]
+            tempdict['next-state'] = temprule[3]
+            tempdict['push'] = temprule[4]
+        rule[temprule[1]] = tempdict
+    # def checkInput(self,currentState,currentInput,)
+
+
+
+    
+    def parsePDA(self):
+        f = open("PDA.txt")
+        s = f.readlines()
+        self.makeStateList(self, s)
+        s = f.readlines()
+        self.makeSymbolList(self, s)
+        s = ''
+        s = f.readlines()
+        while not s:
+            self.makeRuleDict(self,s)
+            s = f.readlines()
+
+
+
     def __init__(self):
         states, self.rules, input_symbols = self.read_files('PDA.txt')
         self.current_state = 'MAIN'
@@ -131,3 +210,4 @@ html_string = """<html>
 </body>
 </html>"""
 html_parser.parse_html(html_string)
+

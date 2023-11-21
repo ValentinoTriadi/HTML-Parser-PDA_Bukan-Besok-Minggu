@@ -1,7 +1,6 @@
 HTML HEAD BODY INNERHEAD INNERBODY 
 < > / ' " a b c d e f g h i j k l m n o p q r s t u v w x y z 1 2 3 4 5 6 7 8 9
 MAIN < Z HTML Z><head></head><body></body></html> 
-HTML h h 
 HEAD < < HEAD ε
 HEAD head head HEAD ε
 HEAD > > INNERHEAD ε
@@ -13,4 +12,3 @@ INNERHEAD </ </ /HEAD ε
 TITLE > > ANY ε
 ANY </ </ /TITLE ε
 /TITLE > > HEAD ε
-
