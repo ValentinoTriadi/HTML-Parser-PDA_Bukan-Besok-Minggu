@@ -73,6 +73,7 @@ class HTMLParser:
             if not s in self.rule[self.current_state].keys():
                 print("Symbol is not an input of current state")
                 return False
+            
         return True
     
     def modifyStack(self, cc):
@@ -84,25 +85,34 @@ class HTMLParser:
             for c in push:
                 if c != '@':
                     self.stack.append(c)
+            return True
+        else:
+            return False
         
     def parseHTML(self, namafile):
         f = open(namafile, 'r')
         s = f.read()
         f.close()
-        s = s.replace('\n', '')
+        # s = s.replace('\n', '')
         print(s)
+        line = 1
 
         for cc in s:
-            if not self.checkSymbol(cc):
-                return False
-            self.modifyStack(cc)
-            print(cc, self.stack)
+            if cc == '\n':
+                line += 1
+            else:
+                if not self.checkSymbol(cc):
+                    return line
+                if (not self.modifyStack(cc)):
+                    print("Gabener woi tag nya")
+                    return line
+                print(cc, self.stack)
             
-        return True
+        return -1
 
 html_parser = HTMLParser()
 status = html_parser.parseHTML("html.txt")
-if not status:
-    print("FAIL")
+if status != -1:
+    print("FAIL on line", status)
 else:
     print("SUCCESS")
