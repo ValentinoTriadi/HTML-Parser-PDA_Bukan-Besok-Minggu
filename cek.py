@@ -65,19 +65,26 @@ class HTMLParser:
         for i in range(2,len(s)):
             self.makeRuleDict(s[i])
 
-    def checkSymbol(self,s):
-        if not s in self.symbol:
+    def checkSymbol(self, s):
+        if not s in self.symbol and s != ' ':
             print("Unexpected Symbol")
             return False
         else:
-            if not s in self.rule[self.current_state].keys():
-                print("Symbol is not an input of current state")
+            if ('@' in self.rule[self.current_state].keys() and s != '<'):
+                return True
+            elif not s in self.rule[self.current_state].keys():
+                print(f"Symbol {s} is not an input of current state")
                 return False
-            
+
         return True
     
     def modifyStack(self, cc):
         top = self.stack[-1]
+        if ('@' in self.rule[self.current_state].keys()):
+            c = self.rule[self.current_state].keys()
+            for i in c:
+                if (cc != i and i != '@'):
+                    return True
         if (self.rule[self.current_state][cc]['top'] == top):
             self.stack.pop()
             push = self.rule[self.current_state][cc]['push']
@@ -86,8 +93,16 @@ class HTMLParser:
                 if c != '@':
                     self.stack.append(c)
             return True
+    
         else:
             return False
+        
+    def reversestack(self, stack):
+        bro = stack
+        newstack = []
+        for i in range(len(bro)):
+            newstack.append(bro[-i-1])
+        return newstack
         
     def parseHTML(self, namafile):
         f = open(namafile, 'r')
@@ -104,10 +119,10 @@ class HTMLParser:
                 if not self.checkSymbol(cc):
                     return line
                 if (not self.modifyStack(cc)):
-                    print("Gabener woi tag nya")
-                    return line
-                print(cc, self.stack)
-            
+                    print("Gabener woi tag nya ",cc)
+                    return line 
+                newstack = self.reversestack(self.stack)
+                print(cc, newstack, self.current_state)
         return -1
 
 html_parser = HTMLParser()
@@ -116,3 +131,5 @@ if status != -1:
     print("FAIL on line", status)
 else:
     print("SUCCESS")
+
+    
