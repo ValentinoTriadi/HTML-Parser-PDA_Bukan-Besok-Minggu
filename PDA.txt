@@ -1,42 +1,57 @@
-HTML HEAD BODY INNERHEAD INNERBODY 
+HTML HEAD TITLE LINK SCRIPT STR BODY INNERHEAD INNERBODY /HTML /HEAD /TITLE /BODY 
 < > / ' " a b c d e f g h i j k l m n o p q r s t u v w x y z 1 2 3 4 5 6 7 8 9
 MAIN < Z HTML Z>lmth/<>ydob/<>ydob<>daeh/<>daeh<>lmth
 
-HTML h h HTML ε
-HTML t t HTML ε
-HTML m m HTML ε
-HTML l l HTML ε
-HTML > > HTML ε
+HTML h h HTML @
+HTML t t HTML @
+HTML m m HTML @
+HTML l l HTML @
+HTML > > HTML @
 
-HTML < < HTML ε
-HTML / / /HTML ε
-/HTML h h /HTML ε
-/HTML t t /HTML ε
-/HTML m m /HTML ε
-/HTML l l /HTML ε
-/HTML > > ACCEPTED ε
+HTML < < HTML @
+HTML / / /HTML @
+/HTML h h /HTML @
+/HTML t t /HTML @
+/HTML m m /HTML @
+/HTML l l /HTML @
+/HTML > > ACCEPTED @
 
-HTML h h HEAD ε
-HEAD e e HEAD ε
-HEAD a a HEAD ε
-HEAD d d HEAD ε
-HEAD > > INNERHEAD ε
+HTML h h HEAD @
+HEAD e e HEAD @
+HEAD a a HEAD @
+HEAD d d HEAD @
+HEAD > > INNERHEAD @
 
-INNERHEAD < < INNERHEAD ε
-INNERHEAD t t TITLE ε
-TITLE i i TITLE ε
-TITLE t t TITLE ε
-TITLE l l TITLE ε
-TITLE e e TITLE ε
-TITLE > > TITLE ε
-TITLE STR STR TITLE ε
-TITLE < < TITLE ε
-TITLE / / /TITLE ε
-/TITLE t t /TITLE ε
-/TITLE i i /TITLE ε
-/TITLE t t /TITLE ε
-/TITLE l l /TITLE ε
-/TITLE e e /TITLE ε
-/TITLE > > INNERHEAD ε
+INNERHEAD < < INNERHEAD @
+INNERHEAD t @ TITLE >eltit/<>eltit<
+INNERHEAD l @ LINK >knil/<>knil<
+INNERHEAD s @ SCRIPT >tpircs/<>tpircs< 
+INNERHEAD / / /HEAD @
+TITLE i i TITLE @
+TITLE t t TITLE @
+TITLE l l TITLE @
+TITLE e e TITLE @
+TITLE > > TITLE @
+TITLE STR STR TITLE @
+TITLE < < TITLE @
+TITLE / / /TITLE @
+/TITLE t t /TITLE @
+/TITLE i i /TITLE @
+/TITLE t t /TITLE @
+/TITLE l l /TITLE @
+/TITLE e e /TITLE @
+/TITLE > > INNERHEAD @
+
+/HEAD e e /HEAD @ 
+/HEAD a a /HEAD @ 
+/HEAD d d /HEAD @
+/HEAD > > BODY @
+BODY < < BODY @
+BODY b b BODY @ 
+BODY o o BODY @
+BODY d d BODY @
+BODY y y BODY @
+BODY > > INNERBODY @
+
 
 
