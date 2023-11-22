@@ -1,7 +1,6 @@
 HTML HEAD TITLE LINK SCRIPT STR BODY INNERHEAD INNERBODY /HTML /HEAD /TITLE /BODY 
 < > / ' " a b c d e f g h i j k l m n o p q r s t u v w x y z 1 2 3 4 5 6 7 8 9
 MAIN < Z HTML Z>lmth/<>ydob/<>ydob<>daeh/<>daeh<>lmth
-
 HTML h h HTML @
 HTML t t HTML @
 HTML m m HTML @
