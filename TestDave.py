@@ -2,20 +2,22 @@ class HTMLParser:
     current_state:str = ''
     state:list = []
     rule:dict = {
-        '<': {
-            'top': '',
-            'next-stack':'',
-            'push':''
-        },
-        'h': {
-            'top': '',
-            'next-stack':'',
-            'push':''
-        },
-        'l': {
-            'top': '',
-            'next-stack':'',
-            'push':''
+        'current-state': {
+            '<': {
+                'top': '',
+                'next-stack':'',
+                'push':''
+            },
+            'h': {
+                'top': '',
+                'next-stack':'',
+                'push':''
+            },
+            'l': {
+                'top': '',
+                'next-stack':'',
+                'push':''
+            }
         }
     }
     symbol:list = []
@@ -54,11 +56,14 @@ class HTMLParser:
             else:
                 temprule.append(temp)
                 temp = ''
-        if temprule[0] == current_state:
+        print(rule.keys)
+        if temprule[0] in rule.keys:
             tempdict['top'] = temprule[2]
             tempdict['next-state'] = temprule[3]
             tempdict['push'] = temprule[4]
         rule[temprule[1]] = tempdict
+
+
     # def checkInput(self,currentState,currentInput,)
 
 
