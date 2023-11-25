@@ -78,7 +78,7 @@ class HTMLParser:
                     if (s != i and i != '@'):
                         return True
             elif not s in self.rule[self.current_state].keys():
-                print(f"Symbol {s} is not an input of current state")
+                print(f"\x1b[93mSymbol {s} is not an input of current state\x1b[0m")
                 return False
 
         return True
@@ -141,7 +141,7 @@ class HTMLParser:
                     print("Gabener woi tag nya",'\033[95m',cc)
                     return line, char 
                 newstack = self.reversestack(self.stack)
-                print(cc, newstack, self.current_state)
+                print('\x1b[95m',cc, newstack, self.current_state,'\x1b[0m')
         print(temp)
         return -1, -1
 
