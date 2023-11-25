@@ -123,6 +123,9 @@ class HTMLParser:
                     return line 
                 newstack = self.reversestack(self.stack)
                 print(cc, newstack, self.current_state)
+                if(len(self.stack) == 0):
+                    return 0
+                
         return -1
 
 html_parser = HTMLParser()
