@@ -146,7 +146,7 @@ html_parser = HTMLParser()
 status = html_parser.parseHTML("html.txt")
 
 if status[0] != -1:
-    print("FAIL on line", status[0], "char ke", status[1])
+    print("FAIL on line", status[0], "char ke", status[1], "On state", html_parser.current_state)
 else:
     if (html_parser.stack[-1] == 'Z'):
         print("SUCCESS")
