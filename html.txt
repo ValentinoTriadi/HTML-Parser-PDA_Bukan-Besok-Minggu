@@ -1,14 +1,17 @@
 <html>
     <head>
-        <link Rel="ASD" href="ASD" href="ASD">
+        <link>
     </head>
     <body>
-        <h1>konot<em>boku</em></h1>
-        <h2></h2>
-        <h3></h3>
-        <h4></h4>
-        <h5></h5>
+        <h1><b></b></h1>
+        <h2><br></h2>
+        <h3><em></em></h3>
+        <h4><strong></strong></h4>
+        <h5><small></small><img></h5>
         <h6></h6>
+        <img>
         <p></p>
+        <a><abbr></abbr></a>
+        <script>lala biang</script>
     </body>
 </html>
