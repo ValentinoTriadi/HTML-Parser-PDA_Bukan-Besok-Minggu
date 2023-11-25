@@ -55,9 +55,9 @@ transHEAD l / LINK /<>+kni
 LINK i i LINK @
 LINK n n LINK @
 LINK k k LINK @
-LINK + + LINK @
-LINK R > REL >""=le
-LINK h > HREF >""=fer
+LINK + + TRANSLINK @
+TRANSLINK R > REL >""=le
+TRANSLINK h > HREF >""=fer
 HREF h h HREF @
 HREF r r HREF @
 HREF e e HREF @
@@ -70,7 +70,7 @@ REL = = REL @
 REL " " ANY2 @
 ANY2 @ " ANY2 "
 ANY2 " " TRANSLINK @
-TRANSLINK + > HREF >""=ferh
+TRANSLINK + > TRANSLINK >
 TRANSLINK > > transHEAD @
 transHEAD s / SCRIPT /<>tpirc
 SCRIPT c c SCRIPT @
