@@ -135,7 +135,7 @@ BUTTON > > ANYA >
 /BUTTON > > transBODY @
 transBODY < < transBODY @
 transBODY a / A /<a/>
-transBODY t / TABLE //>elbat
+transBODY t / TABLE /elbe/>elba
 A / / A @
 A > > ANYA >
 ANYA @ > ANYA >
