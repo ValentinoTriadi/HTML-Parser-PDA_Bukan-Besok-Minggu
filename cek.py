@@ -11,7 +11,6 @@ class HTMLParser:
         self.parsePDA()
         print(self.symbol)
         print(self.state)
-
         # current_state:str = ''
         # state:list = []
         # rule:dict = {

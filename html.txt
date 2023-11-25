@@ -1,14 +1,24 @@
 <html>
     <head>
-        <link Rel="ASD" href="ASD" href="ASD">
+        <link>
     </head>
     <body>
-        <h1 style="KOE" class="ASDASDW" id="ASD">konot<em>boku</em></h1>
-        <h2></h2>
-        <h3></h3>
-        <h4></h4>
-        <h5></h5>
-        <h6></h6>
-        <p></p>
+        <div>
+            <h1><b>is Bold mean Strong?</b><strong>No its diffrent</strong><em>besok</em>minggu<small>is this small</small><abbr> abbr real kah </abbr></h1>
+            <div>
+                <button>click me pls!!</button>
+                <div>
+                    <form>
+                        <p><abbr>besok jumat@ pls gw pingin tidur</abbr><em>bebek</em></p>
+                        <div>
+
+                        </div>
+                        <h5><abbr>besok jumat pls gw pingin tidur</abbr></h5>
+                    </form>
+                </div>
+                <a>Link to Bing</a>
+            </div>
+            <h2>Besok minggu</h2>
+        </div>
     </body>
 </html>
