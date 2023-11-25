@@ -70,8 +70,11 @@ class HTMLParser:
             print("Unexpected Symbol")
             return False
         else:
-            if ('@' in self.rule[self.current_state].keys() and s != '<'):
-                return True
+            if ('@' in self.rule[self.current_state].keys()):
+                c = self.rule[self.current_state].keys()
+                for i in c:
+                    if (s != i and i != '@'):
+                        return True
             elif not s in self.rule[self.current_state].keys():
                 print(f"Symbol {s} is not an input of current state")
                 return False
@@ -111,25 +114,44 @@ class HTMLParser:
         # s = s.replace('\n', '')
         print(s)
         line = 1
-
+        char = 0
+        temp = ""
+        ignoreSpace = True
         for cc in s:
             if cc == '\n':
                 line += 1
+                char = 0
+                ignoreSpace = True
+            elif cc == ' ' and ignoreSpace:
+                char+=1
+                continue
             else:
+                temp+=cc
+                char+=1
+                ignoreSpace = False
+                if (cc == ' '):
+                    cc = '+'
                 if not self.checkSymbol(cc):
-                    return line
+                    return line, char
                 if (not self.modifyStack(cc)):
+                    if (cc == '+'):
+                        cc == "Space"
                     print("Gabener woi tag nya ",cc)
-                    return line 
+                    return line, char 
                 newstack = self.reversestack(self.stack)
                 print(cc, newstack, self.current_state)
-        return -1
+        print(temp)
+        return -1, -1
 
 html_parser = HTMLParser()
 status = html_parser.parseHTML("html.txt")
-if status != -1:
-    print("FAIL on line", status)
+
+if status[0] != -1:
+    print("FAIL on line", status[0], "char ke", status[1])
 else:
-    print("SUCCESS")
+    if (html_parser.stack[-1] == 'Z'):
+        print("SUCCESS")
+    else:
+        print("Stack is not empty!")
 
     
