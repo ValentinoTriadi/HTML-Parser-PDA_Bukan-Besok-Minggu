@@ -1,5 +1,5 @@
 HTML HEAD BODY INNERHEAD INNERBODY 
-< > / ' " = + a b c d e f g h i j k l m n o p q r s t u v w x y z 1 2 3 4 5 6 7 8 9 @ A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
+< > / ' " = + a b c d e f g h i j k l m n o p q r s t u v w x y z 1 2 3 4 5 6 7 8 9 @ A B C D E F G H I J K L M N O P Q R S T U V W X Y Z , ! .
 MAIN < Z HTML Z>lmth/<>ydob/<>ydob<>daeh/<>daeh<>lmth
 HTML h h HTML @
 HTML t t HTML @
@@ -55,9 +55,9 @@ transHEAD l / LINK /<>+kni
 LINK i i LINK @
 LINK n n LINK @
 LINK k k LINK @
-LINK + + LINK @
-LINK R > REL >""=le
-LINK h > HREF >""=fer
+LINK + + TRANSLINK @
+TRANSLINK R > REL >""=le
+TRANSLINK h > HREF >""=fer
 HREF h h HREF @
 HREF r r HREF @
 HREF e e HREF @
@@ -70,7 +70,7 @@ REL = = REL @
 REL " " ANY2 @
 ANY2 @ " ANY2 "
 ANY2 " " TRANSLINK @
-TRANSLINK + > HREF >""=ferh
+TRANSLINK + > TRANSLINK >
 TRANSLINK > > transHEAD @
 transHEAD s / SCRIPT /<>tpirc
 SCRIPT c c SCRIPT @

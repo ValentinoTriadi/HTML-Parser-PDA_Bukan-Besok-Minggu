@@ -1,3 +1,6 @@
+import sys
+
+
 class HTMLParser:
     def __init__(self):
         self.current_state = 'MAIN'
@@ -57,7 +60,7 @@ class HTMLParser:
             self.rule[temprule[0]] = fixdict
 
     def parsePDA(self):
-        f = open("PDA.txt")
+        f = open(sys.argv[1])
         s = f.readlines()
         self.makeStateList(s[0])
         self.makeSymbolList(s[1])
@@ -66,7 +69,7 @@ class HTMLParser:
 
     def checkSymbol(self, s):
         if not s in self.symbol and s != ' ':
-            print("Unexpected Symbol")
+            print("\x1b[93mUnexpected Symbol\x1b[0m")
             return False
         else:
             if ('@' in self.rule[self.current_state].keys()):
@@ -135,7 +138,7 @@ class HTMLParser:
                 if (not self.modifyStack(cc)):
                     if (cc == '+'):
                         cc == "Space"
-                    print("Gabener woi tag nya ",cc)
+                    print("Gabener woi tag nya",'\033[95m',cc)
                     return line, char 
                 newstack = self.reversestack(self.stack)
                 print(cc, newstack, self.current_state)
@@ -143,14 +146,14 @@ class HTMLParser:
         return -1, -1
 
 html_parser = HTMLParser()
-status = html_parser.parseHTML("html.txt")
+status = html_parser.parseHTML(sys.argv[2])
 
 if status[0] != -1:
-    print("FAIL on line", status[0], "char ke", status[1], "On state", html_parser.current_state)
+    print('\033[96m'+"FAIL"+'\033[0m'+" on line", '\033[91m', status[0],'\033[0m', "char ke", '\033[91m', status[1],'\033[0m', "On state",'\033[94m', html_parser.current_state, '\033[0m')
 else:
     if (html_parser.stack[-1] == 'Z'):
-        print("SUCCESS")
+        print('\033[92m'+"SUCCESS"+'\033[0m')
     else:
-        print("Stack is not empty!")
+        print('\033[93m'+"Stack is not empty!"+'\033[0m')
 
     
