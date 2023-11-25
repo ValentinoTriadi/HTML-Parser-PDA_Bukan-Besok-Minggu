@@ -1,3 +1,6 @@
+import sys
+
+
 class HTMLParser:
     def __init__(self):
         self.current_state = 'MAIN'
@@ -58,7 +61,7 @@ class HTMLParser:
             self.rule[temprule[0]] = fixdict
 
     def parsePDA(self):
-        f = open("PDA.txt")
+        f = open(sys.argv[1])
         s = f.readlines()
         self.makeStateList(s[0])
         self.makeSymbolList(s[1])
@@ -144,7 +147,7 @@ class HTMLParser:
         return -1, -1
 
 html_parser = HTMLParser()
-status = html_parser.parseHTML("html.txt")
+status = html_parser.parseHTML(sys.argv[2])
 
 if status[0] != -1:
     print("FAIL on line", status[0], "char ke", status[1], "On state", html_parser.current_state)
