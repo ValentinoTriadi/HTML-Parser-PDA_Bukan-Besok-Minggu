@@ -1,8 +1,10 @@
 <html>
     <head>
-        <link>
+        <link rel="bebek" href="lalpose">
     </head>
     <body>
+        <table>
+        </table>
         <div>
             <h1><b>is Bold mean Strong?</b><strong>No its diffrent</strong><em>besok</em>minggu<small>is this small</small><abbr> abbr real kah </abbr></h1>
             <div>

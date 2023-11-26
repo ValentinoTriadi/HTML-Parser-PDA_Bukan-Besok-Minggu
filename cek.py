@@ -52,6 +52,7 @@ class HTMLParser:
         temprule = s.rstrip().split(' ')
         tempdict['top'] = temprule[2]
         tempdict['next-state'] = temprule[3]
+        #print(temprule[3])
         tempdict['push'] = temprule[4]
         fixdict[temprule[1]] = tempdict
         if temprule[0] in self.rule.keys():
@@ -60,6 +61,7 @@ class HTMLParser:
             self.rule[temprule[0]] = fixdict
 
     def parsePDA(self):
+        print(sys.argv[0])
         f = open(sys.argv[1])
         s = f.readlines()
         self.makeStateList(s[0])
@@ -138,7 +140,7 @@ class HTMLParser:
                 if (not self.modifyStack(cc)):
                     if (cc == '+'):
                         cc == "Space"
-                    print("Gabener woi tag nya",'\033[95m',cc)
+                    print("Gabener woi tag nya",'\033[95m',cc,"harusnya",self.stack[-1])
                     return line, char 
                 newstack = self.reversestack(self.stack)
                 print(cc, newstack, self.current_state)
