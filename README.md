@@ -2,4 +2,4 @@
 
 
 HOW TO RUN:
-1. python main.py PDA.txt <HTML FILE>
+1. python main.py PDA.txt "HTML FILE"
