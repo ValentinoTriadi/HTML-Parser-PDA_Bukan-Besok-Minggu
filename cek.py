@@ -138,10 +138,10 @@ class HTMLParser:
                 if (not self.modifyStack(cc)):
                     if (cc == '+'):
                         cc == "Space"
-                    print("Gabener woi tag nya",'\033[95m',cc)
+                    print("Gabener woi tag nya",'\033[95m',cc, '\x1b[0m')
                     return line, char 
                 newstack = self.reversestack(self.stack)
-                print('\x1b[95m',cc, newstack, self.current_state,'\x1b[0m')
+                print('\x1b[41m',cc, newstack, self.current_state,'\x1b[0m')
         print(temp)
         return -1, -1
 
