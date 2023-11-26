@@ -242,14 +242,14 @@ ALT " " ANYALT @
 ANYALT @ " ANYALT "
 ANYALT " " IMG @
 transBODY b / transBODYB b
-transBODYB u b BUTTON /<>nottub/>""=epyt+nott
+transBODYB u b BUTTON /<>nottub/>nott
 transBODYB r b BR /<>
 BR + > transattrBody >
 BR > > transBODY @
 BUTTON t t BUTTON @
 BUTTON o o BUTTON @
 BUTTON n n BUTTON @
-BUTTON + + transattrBUTTON @
+BUTTON + > transattrBUTTON1 >
 transattrBUTTON t t BUTTONTYPE @
 transattrBUTTON + t transattrBUTTON t
 transattrBUTTON i t IDBUTTON t""=d
@@ -258,6 +258,7 @@ transattrBUTTON c t CLASSBUTTON t""=ssal
 transattrBUTTON1 > > ANYA >
 transattrBUTTON1 + > transattrBUTTON1 >
 transattrBUTTON1 i > IDBUTTON1 >""=d
+transattrBUTTON1 t > TYPEBUTTON1 >""=epy
 transattrBUTTON1 s > STYLEBUTTON1 >""=elyt
 transattrBUTTON1 c > CLASSBUTTON1 >""=ssal
 transattrBUTTON > > ANYA >
@@ -293,6 +294,11 @@ CLASSBUTTON1 a a CLASSBUTTON1 @
 CLASSBUTTON1 s s CLASSBUTTON1 @
 CLASSBUTTON1 = = CLASSBUTTON1 @
 CLASSBUTTON1 " " ANYATTRBUTTONGLOBAL1 @
+TYPEBUTTON1 y y TYPEBUTTON1 @
+TYPEBUTTON1 p p TYPEBUTTON1 @
+TYPEBUTTON1 e e TYPEBUTTON1 @
+TYPEBUTTON1 = = TYPEBUTTON1 @
+TYPEBUTTON1 " " ANYATTRBUTTON1 @
 ANYATTRBUTTON b " ANYATTRBUTTONb "nottu
 ANYATTRBUTTON s " ANYATTRBUTTONs "timbu
 ANYATTRBUTTON r " ANYATTRBUTTONr "tese
