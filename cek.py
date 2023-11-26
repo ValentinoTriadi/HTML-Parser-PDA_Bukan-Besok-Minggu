@@ -147,7 +147,7 @@ class HTMLParser:
                     print("Tag Salah!",'Symbol\033[95m',cc + '\x1b[0m'+ " seharusnya adalah symbol\033[95m", self.stack[-1], '\033[0m')
                     return line, char 
                 newstack = self.reversestack(self.stack)
-                # print('\x1b[41m',cc, newstack, self.current_state,'\x1b[0m')
+                print('\x1b[41m',cc, newstack, self.current_state,'\x1b[0m')
         return -1, -1
 
 html_parser = HTMLParser()
