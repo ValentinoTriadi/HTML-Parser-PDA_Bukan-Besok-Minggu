@@ -101,6 +101,7 @@ class HTMLParser:
                     self.stack.append(c)
             return True
         elif (self.rule[self.current_state][cc]['top'] == '@'):
+            self.current_state = self.rule[self.current_state][cc]['next-state']
             push = self.rule[self.current_state][cc]['push']
             for c in push:
                 if c != '@':
