@@ -57,9 +57,6 @@ def print_all_states(plantuml_code):
     # Printing all states in one line separated by space
     print(" ".join(states))
 
-
-
-
 file_path = 'PDA.txt'
 # Print all states
 # Convert the file and save the PlantUML code to a new file
