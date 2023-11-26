@@ -62,7 +62,7 @@ class HTMLParser:
 
     def parsePDA(self):
         print(sys.argv[0])
-        f = open(sys.argv[1])
+        f = open("PDA.txt")
         s = f.readlines()
         self.makeStateList(s[0])
         self.makeSymbolList(s[1])
@@ -91,6 +91,7 @@ class HTMLParser:
             c = self.rule[self.current_state].keys()
             for i in c:
                 if (cc != i and i != '@'):
+                    self.current_state = self.rule[self.current_state]['@']['next-state']
                     return True
         if (self.rule[self.current_state][cc]['top'] == top):
             self.stack.pop()
@@ -101,8 +102,8 @@ class HTMLParser:
                     self.stack.append(c)
             return True
         elif (self.rule[self.current_state][cc]['top'] == '@'):
-            self.current_state = self.rule[self.current_state][cc]['next-state']
             push = self.rule[self.current_state][cc]['push']
+            self.current_state = self.rule[self.current_state][cc]['next-state']
             for c in push:
                 if c != '@':
                     self.stack.append(c)
@@ -146,7 +147,7 @@ class HTMLParser:
                 if (not self.modifyStack(cc)):
                     if (cc == '+'):
                         cc == "Space"
-                    print("Gabener woi tag nya",'\033[95m',cc, '\x1b[0m')
+                    print("Gabener woi tag nya",'\033[95m',cc, '\x1b[0m', ", harusnya",self.stack[-1])
                     return line, char 
                 newstack = self.reversestack(self.stack)
                 print('\x1b[41m',cc, newstack, self.current_state,'\x1b[0m')
@@ -154,7 +155,7 @@ class HTMLParser:
         return -1, -1
 
 html_parser = HTMLParser()
-status = html_parser.parseHTML(sys.argv[2])
+status = html_parser.parseHTML("html.html")
 
 if status[0] != -1:
     print('\033[96m'+"FAIL"+'\033[0m'+" on line", '\033[91m', status[0],'\033[0m', "char ke", '\033[91m', status[1],'\033[0m', "On state",'\033[94m', html_parser.current_state, '\033[0m')
