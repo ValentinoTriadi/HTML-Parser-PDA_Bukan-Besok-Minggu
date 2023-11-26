@@ -1,0 +1,211 @@
+import sys
+
+KAMUS
+current_state : String
+stack : Array of Character
+state : Array of String
+symbol : Array of Character
+rule : Map [current_state] of Map [input] of Map [top, next-state, push]
+lines : String
+f : REC
+i : Integer
+status : Array [0..1] of Integer
+procedure makeStateList(input s: String)
+    {membuat array of state}
+procedure makeSymbolList(input s: String)
+    {membuat array of accepted symbol}
+procedure makeRuleDict(input s: String)
+    {membuat map of rule}
+procedure parsePDA()
+    {mengubah data dari file txt PDA menjadi rule, state, dan symbol}
+function checkSymbol(s: Character) -> boolean
+    {melakukan pengecekan symbol yang diinput dan mengembalikan True jika symbol valid (terdapat pada accepted symbol) dan False jika tidak}
+function modifyStack(cc) -> boolean
+    {melakukan pengubahan stack berdasarkan input dan rule serta mengembalikan True jika perubahan stack valid (sesuai dengan rule) dan False jika tidak }
+function parseHTML(namafile) -> Array [0..1] of Integer
+    {melakukan parsing file html dan mengembalikan informasi error line dan char}
+
+Algoritma
+current_state = 'MAIN'
+stack = ['Z']
+state = []
+symbol = []
+rule = {}
+
+
+procedure makeStateList(input s: String)
+    Kamus Lokal
+        temp : Array of String
+        STATE : String
+        i : Integer
+    Algoritma
+        temp <- []
+        STATE <- ""
+        while (not End_Of_String) do 
+            temp.append(STATE)
+        state <- temp
+
+procedure makeSymbolList(input s: String)
+    Kamus Lokal
+        temp : Array of Character
+        SYMBOL : Character
+        i : Integer
+    Algoritma
+        temp <- []
+        SYMBOL <- ""
+        while (not End_Of_String) do 
+            temp.append(SYMBOL)
+        symbol <- temp
+
+procedure makeRuleDict(input s: String)
+    Kamus Lokal
+        tempdict : Map
+        fixdict : Map
+        temprule : Array of String
+        RULE : String
+    Algoritma
+        tempdict <- {}
+        fixdict <- {}
+        temprule <- []
+        RULE <- ""
+        while (not End_Of_String) do 
+            temprule.append(RULE)
+        tempdict['top'] <- temprule[2]
+        tempdict['next-state'] <- temprule[3]
+        tempdict['push'] <- temprule[4]
+        fixdict[temprule[1]] <- tempdict
+        if (temprule[0] in rule.keys()) then
+            rule[temprule[0]].append(fixdict)
+        else
+            rule[temprule[0]] <- fixdict
+
+procedure parsePDA()
+    Kamus Lokal
+        f : REC
+        s : String
+    Algoritma
+        f <- open(sys.argv[1], f)
+        s <- f.readlines()
+        close(f)
+        makeStateList(s[0])
+        makeSymbolList(s[1])
+        i traversal [2 .. length(s)]:
+            self.makeRuleDict(s[i])
+
+function checkSymbol(s: Character) -> boolean
+    Kamus Lokal
+        c : Array of String
+    Algoritma
+        if (not s in symbol and s != ' ') then
+            output("Syntax Error!")
+            output("Unexpected Symbol", s, "!")
+            -> False
+        else:
+            if ('@' in rule[current_state].keys()) then
+                c <- rule[current_state].keys()
+                i traversal [0 .. length(c)]
+                    if (s != c[i] and c[i] != '@')then
+                        -> True
+            else if (not s in rule[current_state].keys()) then
+                output("Syntax Error!")
+                output("Symbol", s, "is not an input of current state")
+                -> False
+        -> True
+    
+function modifyStack(cc: Character) -> boolean
+    Kamus Lokal
+        top : Character
+        c : Array of String
+    Algoritma
+        top <- stack[-1]
+        if ('@' in rule[current_state].keys()) then
+            c <- rule[current_state].keys()
+            i traversal [0 .. length(c)]
+                if (cc != c[i] and c[i] != '@'):
+                    current_state <- rule[current_state]['@']['next-state']
+                    -> True
+        if (rule[current_state][cc]['top'] == top):
+            stack.pop()
+            push <- rule[current_state][cc]['push']
+            current_state <- rule[current_state][cc]['next-state']
+            i traversal [0 .. length(push)]
+                if push[i] != '@':
+                    stack.append(push[i])
+            -> True
+        else if (rule[current_state][cc]['top'] == '@') then
+            push <- rule[current_state][cc]['push']
+            current_state <- rule[current_state][cc]['next-state']
+            i traversal [0 .. length(push)]
+                if push[i] != '@':
+                    stack.append(push[i])
+            -> True
+        else:
+            -> False
+        
+function parseHTML(namafile: String) -> Array [0..1] of Integer
+    Kamus Lokal
+        line : Integer
+        char : Integer
+        ignoreSpace : boolean
+        f : REC
+        i : Integer
+    Algoritma
+    f <- open(namafile, f)
+    s <- f.read()
+    close(f)
+    line <- 1
+    char <- 0
+    ignoreSpace <- True
+    i traversal [0 .. length(s)]:
+        if (s[i] == '\n') then
+            line <- line + 1
+            char <- 0
+            ignoreSpace <- True
+        elif (s[i] == ' ' and ignoreSpace) then
+            char <- char + 1
+        else
+            char <- char + 1
+            ignoreSpace <- False
+            if (s[i] == ' ') then
+                s[i] = '+'
+            if (not checkSymbol(s[i])) then
+                -> [line, char]
+            if (not self.modifyStack(s[i])):
+                if (s[i] == '+') then
+                    s[i] <- "Space"
+                output("Syntax Error!")
+                output("Tag Salah!", 'Symbol', s[i], "seharusnya adalah symbol", stack[-1])
+                -> [line, char] 
+    -> [-1, -1]
+
+status <- parseHTML(sys.argv[2])
+
+if (status[0] != -1) then
+    output("FAIL on line", status[0], "char ke", status[1], "On state", current_state)
+    f <- open(sys.argv[2])
+    lines <- ""
+    i traversal [0 .. status[0]]:
+        lines <- f.readline()
+    count <- 0
+    ignoreBlank <- True
+    output("Error: ")
+    i traversal [0 .. lines]
+        count <- count + 1
+        if (lines[i] == ' ' and ignoreBlank):
+            continue
+        else:
+            ignoreBlank <- False
+            if (count != status[1]):
+                output(lines[i])
+            else:
+                if (lines[i] != ' '):
+                    output(lines[i])
+                else:
+                    output('_')
+else
+    if (stack[-1] == 'Z') then
+        output("Accepted")
+    else
+        output("Stack is not empty!")
+
+    
