@@ -58,6 +58,7 @@ class HTMLParser:
     def parsePDA(self):
         f = open(sys.argv[1])
         s = f.readlines()
+        f.close()
         self.makeStateList(s[0])
         self.makeSymbolList(s[1])
         for i in range(2,len(s)):
